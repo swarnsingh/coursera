@@ -36,7 +36,7 @@ public class MoneyChange {
     public static void main(String[] args) {
         FastScanner fastScanner = new FastScanner(System.in);
         int money = fastScanner.nextInt();
-        int[] availableCoins = new int[]{10, 5, 1};
+        int[] availableCoins = new int[]{4, 3, 1};
         if (money > 0 && money <= 1000) {
             System.out.println(getChange(availableCoins, money));
         }
@@ -45,7 +45,17 @@ public class MoneyChange {
     private static int getChange(int[] availableCoins, int money) {
         int changeCount = 0;
 
-        while (money > 0) {
+        for (int coin : availableCoins) {
+            if (money % coin == 0) {
+                changeCount += money / coin;
+                money = 0;
+            } else if (money % coin > 0) {
+                changeCount += money / coin;
+                money %= coin;
+            }
+        }
+
+        /*while (money > 0) {
             for (int i : availableCoins) {
                 int temp = money - i;
                 if (temp >= 0) {
@@ -55,7 +65,7 @@ public class MoneyChange {
                     break;
                 }
             }
-        }
+        }*/
         System.out.println("\n");
         return changeCount;
     }

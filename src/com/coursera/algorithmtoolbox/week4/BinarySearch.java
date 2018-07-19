@@ -25,28 +25,41 @@ import com.coursera.util.FastScanner;
  * @author Swarn Singh.
  */
 public class BinarySearch {
-    static int binarySearch(int[] a, int key) {
-        int low = 0, high = a.length;
-        if (high < low)
-            return low - 1;
-
-        int mid = low + ((high - low) / 2);
-
-        if (key == a[mid])
-            return mid;
-        else if (key < a[mid])
-            return binarySearch(a, low, mid - 1, key);
-        else
-            return binarySearch(a, mid + 1, high, key);
-    }
 
     static int binarySearch(int[] a, int low, int high, int key) {
 
-        for (int i = low; i < high; i++) {
-            if (a[i] == key)
-                return i;
+        int mid = low + ((high - low) / 2);
+
+        if (mid >= a.length) {
+            return -1;
+        } else if (key == a[mid]) {
+            return mid;
+        } else if (low >= high) {
+            return -1;
+        } else if (key < a[mid]) {
+            return binarySearch(a, low, mid - 1, key);
+        } else {
+            return binarySearch(a, mid + 1, high, key);
         }
-        return -1;
+    }
+
+    private static int binarySearch0(long[] a, int fromIndex, int toIndex,
+                                     long key) {
+        int low = fromIndex;
+        int high = toIndex - 1;
+
+        while (low <= high) {
+            int mid = (low + high) >>> 1;
+            long midVal = a[mid];
+
+            if (midVal < key)
+                low = mid + 1;
+            else if (midVal > key)
+                high = mid - 1;
+            else
+                return mid; // key found
+        }
+        return -(low + 1);  // key not found.
     }
 
     static int linearSearch(int[] a, int x) {
@@ -70,7 +83,7 @@ public class BinarySearch {
         }
 
         for (int i = 0; i < m; i++) {
-            System.out.print(binarySearch(a, b[i]) + " ");
+            System.out.print(binarySearch(a, 0, a.length, b[i]) + " ");
         }
     }
 }
