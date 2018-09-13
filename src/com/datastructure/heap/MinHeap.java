@@ -1,9 +1,9 @@
-package com.coursera.heap;
+package com.datastructure.heap;
 
 /**
  * @author Swarn Singh.
  */
-public class MaxHeap {
+public class MinHeap {
 
     private int[] heap;
 
@@ -13,7 +13,7 @@ public class MaxHeap {
 
     private boolean isRootInserted = false;
 
-    public MaxHeap(int capacity) {
+    public MinHeap(int capacity) {
         this.heap = new int[capacity];
         this.capacity = capacity;
         this.size = 0;
@@ -41,10 +41,11 @@ public class MaxHeap {
 
         int currentPos = size;
 
-        while (heap[currentPos] > heap[(parent(currentPos))]) {
+        while (heap[currentPos] < heap[(parent(currentPos))]) {
             swap(currentPos, parent(currentPos));
             currentPos = parent(currentPos);
         }
+
     }
 
     private int parent(int pos) {
@@ -67,19 +68,19 @@ public class MaxHeap {
     }
 
     public static void main(String[] args) {
-        MaxHeap maxHeap = new MaxHeap(10);
-        maxHeap.insert(3);
-        maxHeap.insert(2);
-        maxHeap.insert(1);
-        maxHeap.insert(7);
-        maxHeap.insert(8);
-        maxHeap.insert(4);
-        maxHeap.insert(10);
-        maxHeap.insert(16);
-        maxHeap.insert(12);
-        maxHeap.insert(5);
+        MinHeap minHeap = new MinHeap(10);
+        minHeap.insert(3);
+        minHeap.insert(2);
+        minHeap.insert(1);
+        minHeap.insert(7);
+        minHeap.insert(8);
+        minHeap.insert(4);
+        minHeap.insert(10);
+        minHeap.insert(16);
+        minHeap.insert(12);
+        minHeap.insert(5);
 
-        for (int e : maxHeap.heap) {
+        for (int e : minHeap.heap) {
             System.out.print(e + " ");
         }
     }
