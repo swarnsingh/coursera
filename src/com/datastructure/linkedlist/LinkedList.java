@@ -32,6 +32,26 @@ public class LinkedList<E> {
         size++;
     }
 
+    public void reverse() {
+        Node temp = null;
+        Node current = first;
+
+        /* swap next and prev for all nodes of
+         doubly linked list */
+        while (current != null) {
+            temp = current.prev;
+            current.prev = current.next;
+            current.next = temp;
+            current = current.prev;
+        }
+
+        /* Before changing head, check for the cases like empty
+         list and list with only one node */
+        if (temp != null) {
+            first = temp.prev;
+        }
+    }
+
     Node<E> node(int index) {
         if (index < (size >> 1)) {
             Node<E> x = first;
@@ -54,18 +74,32 @@ public class LinkedList<E> {
         return result;
     }
 
-    public void reverse() {
-
-    }
-
     public static void main(String[] args) {
         LinkedList<String> l = new LinkedList();
         l.add("1");
         l.add("2");
         l.add("3");
+        l.add("4");
+        l.add("5");
+        l.add("6");
 
         for (Object e : l.getAll()) {
-            System.out.println(e);
+            System.out.print(e+" ");
+        }
+
+        System.out.println("\n\nAfter Reverse\n\n");
+        l.reverse();
+        for (Object e : l.getAll()) {
+            System.out.print(e+" ");
+        }
+
+        l.add("7");
+        l.add("8");
+
+        System.out.println("\n\nAfter Add\n\n");
+
+        for (Object e : l.getAll()) {
+            System.out.print(e+" ");
         }
         //System.out.println("Node [0] Value : "+l.node(0).item);
     }
