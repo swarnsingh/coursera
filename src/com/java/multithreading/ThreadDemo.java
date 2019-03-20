@@ -4,6 +4,7 @@ package com.java.multithreading;
  * @author Swarn Singh.
  */
 public class ThreadDemo implements Runnable {
+
     @Override
     public void run() {
         for (int i = 1; i < 5; i++) {
@@ -18,6 +19,8 @@ public class ThreadDemo implements Runnable {
 
     public static void main(String[] args) {
         ThreadDemo threadDemo = new ThreadDemo();
+        System.out.println("Main Thread id : " + Thread.currentThread().getId());
+
         Thread t1 = new Thread(threadDemo);
         Thread t2 = new Thread(threadDemo);
         Thread t3 = new Thread(threadDemo);

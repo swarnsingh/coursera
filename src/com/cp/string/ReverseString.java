@@ -5,7 +5,7 @@ package com.cp.string;
  */
 public class ReverseString<T> {
 
-    public <T extends Object> T[] reverse(T[] arr) {
+    public <T> T[] reverse(T[] arr) {
         T temp;
 
         if (arr == null) {
@@ -21,11 +21,6 @@ public class ReverseString<T> {
 
     public static void main(String[] args) {
         ReverseString<Integer> reverseString = new ReverseString<>();
-        Integer[] arr = null;
-        arr = reverseString.reverse(arr);
-        for (int i : arr) {
-            System.out.print(i + " ");
-        }
 
         Character[] character = {'a','b','c','d','e'};
         character = reverseString.reverse(character);
