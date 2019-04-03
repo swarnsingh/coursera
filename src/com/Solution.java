@@ -66,6 +66,14 @@ public class Solution {
 
     public static void main(String[] args) throws Exception {
 
+        try {
+            throw new P();
+        } catch(P p) {
+            System.out.println("First");
+        } catch(Exception e) {
+            System.out.println("Second");
+        }
+
 
         int arrCount = 5;
 
@@ -240,4 +248,15 @@ public class Solution {
             return true;
         }
     }
+
+    static class P extends Exception {
+
+    }
+
+    static class Q extends P {
+
+    }
+
+
+
 }

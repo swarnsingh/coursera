@@ -33,23 +33,7 @@ public class LinkedList<E> {
     }
 
     public void reverse() {
-        Node temp = null;
-        Node current = first;
 
-        /* swap next and prev for all nodes of
-         doubly linked list */
-        while (current != null) {
-            temp = current.prev;
-            current.prev = current.next;
-            current.next = temp;
-            current = current.prev;
-        }
-
-        /* Before changing head, check for the cases like empty
-         list and list with only one node */
-        if (temp != null) {
-            first = temp.prev;
-        }
     }
 
     Node<E> node(int index) {
@@ -101,6 +85,5 @@ public class LinkedList<E> {
         for (Object e : l.getAll()) {
             System.out.print(e+" ");
         }
-        //System.out.println("Node [0] Value : "+l.node(0).item);
     }
 }

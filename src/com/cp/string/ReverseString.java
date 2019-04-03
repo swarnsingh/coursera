@@ -1,5 +1,9 @@
 package com.cp.string;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
+
 /**
  * @author Swarn Singh.
  */
@@ -19,7 +23,35 @@ public class ReverseString<T> {
         return arr;
     }
 
+    public static String reverseWords(String inputWords) {
+        StringBuilder reverse = new StringBuilder();
+        String[] arr = inputWords.split("\\s+");
+        for (int i = arr.length-1; i >= 0; i--) {
+            reverse.append(arr[i]+" ");
+        }
+        return reverse.toString().trim();
+    }
+
+    public static List<Integer> getFirstTwoItemsWithoutPair(List<Integer> list) {
+        return null;
+    }
+
     public static void main(String[] args) {
+        List<Integer> list = new ArrayList<>();
+        list.add(5);
+        list.add(7);
+        list.add(23);
+        list.add(23);
+        list.add(5);
+        list.add(7);
+        list.add(1);
+        list.add(5);
+        list.add(3);
+
+
+        System.out.println(getFirstTwoItemsWithoutPair(list));
+        System.out.println(reverseWords("agoda best apps"));
+
         ReverseString<Integer> reverseString = new ReverseString<>();
 
         Character[] character = {'a','b','c','d','e'};
@@ -28,5 +60,6 @@ public class ReverseString<T> {
         for (Character i : character) {
             System.out.print(i + " ");
         }
+
     }
 }

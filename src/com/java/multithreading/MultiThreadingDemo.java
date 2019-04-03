@@ -27,9 +27,17 @@ public class MultiThreadingDemo implements Runnable {
     @Override
     public void run() {
         for (int i = 0; i < 10000; i++) {
-            count = count + 1;
+            count++;
         }
-        // Here final count value should be 40,000 but it is not guaranteed even you use volatile variable
+        /**
+         * Here final count value should be 40,000 but it is not guaranteed even you use volatile variable
+         * To fix this issue we can synchronized the count++ block
+         *      synchronized (this) {
+         *          count++;
+         *      }
+         *      or we can use AtomicInteger value = new AtomicInteger(1);
+         *      value.increment(); // It will ensure each thread do their compound operations(read & write) atomically
+         */
         System.out.println("Current Thread : " + Thread.currentThread().getId() + " Count : " + count);
     }
 }
