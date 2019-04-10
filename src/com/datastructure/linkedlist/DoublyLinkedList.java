@@ -38,6 +38,11 @@ public class DoublyLinkedList<E> {
         size++;
     }
 
+    public void insert(int index, E item) {
+
+    }
+
+
     public boolean remove(E item) {
         if (isEmpty()) return false;
 
