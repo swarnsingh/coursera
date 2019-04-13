@@ -25,6 +25,11 @@ public class DoublyLinkedList<E> {
         return size == 0;
     }
 
+    private void checkPositionIndex(int index) {
+        if (index < 0 || index > size)
+            throw new IndexOutOfBoundsException("Index: " + index + ", Size: " + size);
+    }
+
     public void add(E item) {
         Node<E> lastNode = tail;
         Node newNode = new Node(lastNode, item, null);
@@ -38,8 +43,56 @@ public class DoublyLinkedList<E> {
         size++;
     }
 
-    public void insert(int index, E item) {
+    public void add(int index, E item) {
+        checkPositionIndex(index);
 
+        Node<E> current;
+        Node<E> newNode = new Node<>(null, item, null);
+        if (index < (size >> 1)) {
+            current = head;
+            for (int i = 0; i <= index; i++) {
+                if (index == 0) {
+                    newNode.next = current;
+                    current.prev = newNode;
+                    head = newNode;
+                    size++;
+                    break;
+                } else if (i == index - 1) {
+                    Node<E> next = current.next;
+                    current.next = newNode;
+                    next.prev = newNode;
+                    newNode.prev = current;
+                    newNode.next = next;
+
+                    size++;
+                    break;
+                }
+                current = current.next;
+            }
+        } else {
+            current = tail;
+            for (int i = size; i >= index; i--) {
+                if (index == size) {
+                    newNode.prev = current;
+                    current.next = newNode;
+
+                    tail = newNode;
+                    size++;
+                    break;
+                } else if (i == index + 1) {
+                    Node<E> prev = current.prev;
+                    current.prev = newNode;
+                    prev.next = newNode;
+
+                    newNode.prev = prev;
+                    newNode.next = current;
+
+                    size++;
+                    break;
+                }
+                current = current.prev;
+            }
+        }
     }
 
 
@@ -153,6 +206,8 @@ public class DoublyLinkedList<E> {
         System.out.println("\n\n");
 
         dll.remove(15);
+        dll.add(6, 11);
+
         for (Object e : dll.getAll()) {
             System.out.print(e + " ");
         }
