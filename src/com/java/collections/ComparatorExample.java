@@ -1,9 +1,6 @@
 package com.java.collections;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
+import java.util.*;
 
 /**
  * @author Swarn Singh.
@@ -34,6 +31,26 @@ public class ComparatorExample {
 
         Collections.sort(al, Comparator.comparing(Student::getRollNo));
         al.forEach(st -> System.out.println(st.rollNo + " " + st.name + " " + st.age));
+
+        List<String> list = new ArrayList<>();
+
+        list.add("123");
+        list.add("456");
+        list.add("789");
+
+        Iterator<String> iterator = list.iterator();
+
+        while(iterator.hasNext()) {
+            String value = iterator.next();
+
+            if(value.equals("456")){
+               // list.add("999"); // It will throw java.util.ConcurrentModificationException
+                iterator.remove();
+            }
+        }
+
+        System.out.println();
+        list.forEach(System.out::println);
     }
 }
 

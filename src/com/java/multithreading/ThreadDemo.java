@@ -27,7 +27,7 @@ public class ThreadDemo implements Runnable {
 
         t1.start();
         try {
-            t1.join(1500);
+            t1.join();
         } catch (Exception e) {
             System.out.println(e);
         }

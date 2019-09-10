@@ -22,6 +22,10 @@ public class ReverseString<T> {
         return arr;
     }
 
+    public static String solve(int k, List<Integer> numbers) {
+        return numbers.size() % k == 0 ? "Yes" : "No";
+    }
+
     public static String reverseWords(String inputWords) {
         StringBuilder reverse = new StringBuilder();
         String[] arr = inputWords.split("\\s+");
@@ -77,6 +81,8 @@ public class ReverseString<T> {
 
     public static void main(String[] args) {
 
+
+
         System.out.println(solveEncryption("wvmctuj", 28)); //utkarsh
         List<Integer> list = new ArrayList<>();
         list.add(5);
@@ -89,6 +95,7 @@ public class ReverseString<T> {
         list.add(5);
         list.add(3);
 
+        System.out.println(solve(3, list));
 
         System.out.println(getFirstTwoItemsWithoutPair(list));
         System.out.println(reverseWords("agoda best apps"));

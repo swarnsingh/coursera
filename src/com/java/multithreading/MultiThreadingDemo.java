@@ -1,11 +1,14 @@
 package com.java.multithreading;
 
+import java.util.concurrent.atomic.AtomicInteger;
+
 /**
  * @author Swarn Singh.
  */
 public class MultiThreadingDemo implements Runnable {
 
     private volatile int count = 0;
+    AtomicInteger value = new AtomicInteger(0);
 
     public static void main(String[] args) {
         MultiThreadingDemo multiThreadingDemo = new MultiThreadingDemo();
@@ -28,6 +31,7 @@ public class MultiThreadingDemo implements Runnable {
     public void run() {
         for (int i = 0; i < 10000; i++) {
             count++;
+            value.getAndIncrement();
         }
         /**
          * Here final count value should be 40,000 but it is not guaranteed even you use volatile variable
@@ -39,5 +43,6 @@ public class MultiThreadingDemo implements Runnable {
          *      value.increment(); // It will ensure each thread do their compound operations(read & write) atomically
          */
         System.out.println("Current Thread : " + Thread.currentThread().getId() + " Count : " + count);
+        System.out.println("Current Thread : " + Thread.currentThread().getId() + " Atomic Count : " + value);
     }
 }
