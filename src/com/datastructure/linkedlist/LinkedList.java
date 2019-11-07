@@ -7,9 +7,9 @@ import java.util.Stack;
  * @author Swarn Singh.
  */
 public class LinkedList<E> {
-    int size = 0;
-    Node<E> head;
-    Node<E> tail;
+    private int size = 0;
+    private Node<E> head;
+    private Node<E> tail;
 
     private static class Node<E> {
         private Node<E> next;
@@ -119,8 +119,7 @@ public class LinkedList<E> {
 
     private void unlinkBefore(int index) {
         if (index == 0) {
-            Node<E> node = head.next;
-            head = node;
+            head = head.next;
         } else {
             Node<E> node = prevNode(index);
             Node<E> tempNode = node.next;
@@ -164,20 +163,17 @@ public class LinkedList<E> {
     }
 
     public boolean isPalindrome() {
-        StringBuilder sb = new StringBuilder();
-        Stack<E> stack = new Stack<>();
+        Stack<E> stack = new Stack();
         int i = 0;
         for (Node<E> x = head; x != null; x = x.next, i++) {
-            if (i < (size/2)) {
+            if (i < (size / 2)) {
                 stack.push(x.item);
-            } else if (i > (size/2)){
+            } else if (size % 2 == 0 || i != size / 2) {
                 E item = stack.pop();
                 if (item != x.item) {
                     return false;
                 }
             }
-            sb.append(x.item);
-
         }
         return stack.empty();
     }
@@ -187,16 +183,14 @@ public class LinkedList<E> {
         l.add(1);
         l.add(4);
         l.add(4);
-        l.add(3);
-        l.add(8);
         l.add(1);
 
-
+        System.out.print("\nLinked List with Integers : ");
         for (Object e : l.getAll()) {
             System.out.print(e + " ");
         }
 
-        System.out.println("\nIs Linked list is palindrome : "+l.isPalindrome());
+        System.out.println("\nIs Linked list is palindrome : " + l.isPalindrome());
 
         l.add(0, 2);
 
@@ -223,5 +217,17 @@ public class LinkedList<E> {
         for (Object e : l.getAll()) {
             System.out.print(e + " ");
         }
+
+        LinkedList<Character> l1 = new LinkedList<>();
+        l1.add('d');
+        l1.add('a');
+        l1.add('d');
+
+        System.out.print("\nLinked List with Characters : ");
+        for (Object e : l1.getAll()) {
+            System.out.print(e + " ");
+        }
+
+        System.out.println("\nIs Linked list is palindrome : " + l1.isPalindrome());
     }
 }

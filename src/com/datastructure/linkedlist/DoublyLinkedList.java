@@ -6,15 +6,15 @@ package com.datastructure.linkedlist;
 public class DoublyLinkedList<E> {
 
     private Node<E> head;
-    Node<E> tail;
-    int size = 0;
+    private Node<E> tail;
+    private int size = 0;
 
     private static class Node<E> {
         Node<E> prev;
         E item;
         Node<E> next;
 
-        public Node(Node<E> prev, E item, Node<E> next) {
+        Node(Node<E> prev, E item, Node<E> next) {
             this.prev = prev;
             this.item = item;
             this.next = next;
@@ -30,11 +30,15 @@ public class DoublyLinkedList<E> {
             throw new IndexOutOfBoundsException("Index: " + index + ", Size: " + size);
     }
 
-    public void add(E item) {
-        Node<E> lastNode = tail;
-        Node newNode = new Node(lastNode, item, null);
-        tail = newNode;
+    public boolean add(E item) {
+        linkLast(item);
+        return true;
+    }
 
+    private void linkLast(E item) {
+        Node<E> lastNode = tail;
+        Node<E> newNode = new Node<>(lastNode, item, null);
+        tail = newNode;
         if (isEmpty()) {
             head = newNode;
         } else {
@@ -43,58 +47,77 @@ public class DoublyLinkedList<E> {
         size++;
     }
 
-    public void add(int index, E item) {
-        checkPositionIndex(index);
-
-        Node<E> current;
-        Node<E> newNode = new Node<>(null, item, null);
-        if (index < (size >> 1)) {
-            current = head;
-            for (int i = 0; i <= index; i++) {
-                if (index == 0) {
-                    newNode.next = current;
-                    current.prev = newNode;
-                    head = newNode;
-                    size++;
-                    break;
-                } else if (i == index - 1) {
-                    Node<E> next = current.next;
-                    current.next = newNode;
-                    next.prev = newNode;
-                    newNode.prev = current;
-                    newNode.next = next;
-
-                    size++;
-                    break;
-                }
-                current = current.next;
+    /**
+     * It will add item in O(n/2) time.
+     *
+     * @param index position for the item to be added at a specific position
+     * @param item  the element to be add
+     */
+    private void linkBefore(int index, E item) {
+        if (index == 0) {
+            if (size == 0) {
+                linkLast(item);
+            } else {
+                Node<E> headNode = head;
+                Node<E> newNode = new Node<>(null, item, headNode);
+                headNode.prev = newNode;
+                head = newNode;
             }
         } else {
-            current = tail;
-            for (int i = size; i >= index; i--) {
-                if (index == size) {
-                    newNode.prev = current;
-                    current.next = newNode;
+            Node<E> prevNode = prevNode(index);
+            Node<E> nextNode = prevNode.next;
 
-                    tail = newNode;
-                    size++;
-                    break;
-                } else if (i == index + 1) {
-                    Node<E> prev = current.prev;
-                    current.prev = newNode;
-                    prev.next = newNode;
+            Node<E> newNode = new Node<>(prevNode, item, nextNode);
+            prevNode.next = newNode;
+            nextNode.prev = newNode;
+        }
+        size++;
+    }
 
-                    newNode.prev = prev;
-                    newNode.next = current;
-
-                    size++;
-                    break;
-                }
-                current = current.prev;
-            }
+    public void add(int index, E item) {
+        checkPositionIndex(index);
+        if (index == size) {
+            linkLast(item);
+        } else {
+            linkBefore(index, item);
         }
     }
 
+    /**
+     * @return it will return the prevNode in O(n/2) from the specific index position
+     */
+    private Node<E> prevNode(int index) {
+        Node<E> node;
+        if (index < (size >> 1)) {
+            node = head;
+            for (int i = 0; i < index - 1; i++) {
+                node = node.next;
+            }
+        } else {
+            node = tail;
+            for (int i = size; i > index; i--) {
+                node = node.prev;
+            }
+        }
+        return node;
+    }
+
+    public void remove(int index) {
+        checkPositionIndex(index);
+        if (index < (size >> 1)) {
+            unlinkBefore(index);
+        } else {
+            unlinkLast(index);
+        }
+    }
+
+    private void unlinkBefore(int index) {
+
+    }
+
+    private void unlinkLast(int index) {
+
+    }
 
     public boolean remove(E item) {
         if (isEmpty()) return false;
@@ -180,6 +203,13 @@ public class DoublyLinkedList<E> {
         }
     }
 
+    public void printAll() {
+        for (Object e : getAll()) {
+            System.out.print(e + " ");
+        }
+        System.out.println();
+    }
+
     public static void main(String[] args) {
         DoublyLinkedList<Integer> dll = new DoublyLinkedList<>();
 
@@ -188,28 +218,27 @@ public class DoublyLinkedList<E> {
         dll.add(3);
         dll.add(6);
         dll.add(8);
-
-        System.out.println("\n\nItem at index 3 is " + dll.node(3).item + "\n\n");
-
         dll.add(10);
         dll.add(15);
 
+        dll.printAll();
+        System.out.println("\nItem at index 3 is " + dll.node(3).item + " ");
+
         dll.reverse();
+        System.out.println("\nAfter Reverse : ");
+        dll.printAll();
 
-        for (Object e : dll.getAll()) {
-            System.out.print(e + " ");
-        }
-
+        System.out.println("\nAfter adding two items : ");
         dll.add(20);
         dll.add(25);
-
-        System.out.println("\n\n");
+        dll.printAll();
 
         dll.remove(15);
-        dll.add(6, 11);
+        System.out.println("\nAfter removing 15 from the list");
+        dll.printAll();
 
-        for (Object e : dll.getAll()) {
-            System.out.print(e + " ");
-        }
+        dll.add(2, 11);
+        System.out.println("\nAdding 11 at position 2 : ");
+        dll.printAll();
     }
 }
