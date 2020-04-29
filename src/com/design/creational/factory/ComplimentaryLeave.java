@@ -1,9 +1,9 @@
-package com.leave;
+package com.design.creational.factory;
 
 /**
  * @author Swarn Singh.
  */
-public class CasualLeave extends BaseLeaveController {
+public class ComplimentaryLeave extends BaseLeaveController {
 
     @Override
     public void applyLeave(int userId, Leave leave) {

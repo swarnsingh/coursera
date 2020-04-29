@@ -1,4 +1,4 @@
-package com.leave;
+package com.design.creational.factory;
 
 /**
  * @author Swarn Singh.

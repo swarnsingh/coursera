@@ -1,4 +1,4 @@
-package com.design;
+package com.design.creational.singleton;
 
 /**
  * @author Swarn Singh.

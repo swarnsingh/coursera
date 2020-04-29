@@ -1,4 +1,4 @@
-package com.cp.string;
+package com.cp;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -80,8 +80,6 @@ public class ReverseString<T> {
     }
 
     public static void main(String[] args) {
-
-
 
         System.out.println(solveEncryption("wvmctuj", 28)); //utkarsh
         List<Integer> list = new ArrayList<>();
