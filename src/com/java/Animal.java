@@ -31,7 +31,22 @@ class TestAnimal {
         Horse horse = new Horse();
         horse.eat();
 
+        Hashids hashids = new Hashids("this is my salt");
+        hashids.encodeHex("");
+        System.out.println(hashids.decodeHex(""));
+        String id = hashids.encode(1, 2, 3);
+        long[] numbers = hashids.decode(id);
+
+        System.out.println(animal.hashCode());
+
         //horse = (Horse) new Animal();
         //horse.eat();  // It will fail at runtime.
+    }
+
+    @Override
+    public int hashCode() {
+        String deviceId = "34d980f6050120bc";
+        String partnerId = "5a9052b46b66d103ef3b2984";
+        return (int) deviceId.hashCode() * partnerId.hashCode();
     }
 }

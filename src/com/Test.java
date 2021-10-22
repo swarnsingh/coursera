@@ -16,6 +16,14 @@ public class Test {
         StringBuilder name = new StringBuilder();
         Date now = new Date();
 
+        System.out.println(System.getenv());
+
+        System.getenv().putIfAbsent("APPCENTER_TOKEN", "b9edbb781550beb5307c2ea1247f74ddc123a1");
+        System.getenv().putIfAbsent("GITHUB_USERNAME", "swaran90");
+        System.getenv().putIfAbsent("GITHUB_ACCESS_TOKEN", "b8fb773d97940e0e120e6bde2e6f2ea2b0f76fba");
+
+        System.out.println(System.getenv());
+
         SimpleDateFormat dateFormat;
 //        if (getLocalTimeFormat()) {
 ////            dateFormat = new SimpleDateFormat("MMDD_HHmmss");
