@@ -1,6 +1,8 @@
 package com.datastructure.tree;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -25,7 +27,7 @@ public class Trie {
         }
     }
 
-    private void insert(String word) {
+    public void insert(String word) {
         TrieNode current = root;
 
         for (int i = 0; i < word.length(); i++) {
@@ -39,11 +41,30 @@ public class Trie {
             }
             current = node;
         }
-
         current.endOfWord = true;
     }
 
-    private boolean search(String word) {
+    private List<String> searchItems(String word) {
+        List<String> items = new ArrayList<>();
+        TrieNode current = root;
+
+        for (int i = 0; i < word.length(); i++) {
+            char ch = word.charAt(i);
+            TrieNode node = root;
+            if ( i > 0) {
+                for ( int j = 0; j < 3; j++) {
+                    node = current.children.get(ch);
+                    if (node != null) {
+
+                    }
+                }
+            }
+        }
+
+        return items;
+    }
+
+    public boolean search(String word) {
         TrieNode current = root;
 
         for (int i = 0; i < word.length(); i++) {
@@ -56,11 +77,10 @@ public class Trie {
 
             current = node;
         }
-
         return true;
     }
 
-    private boolean delete(String word) {
+    public boolean delete(String word) {
         return delete(root, word, 0);
     }
 

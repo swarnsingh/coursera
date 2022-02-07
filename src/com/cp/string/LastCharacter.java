@@ -14,12 +14,11 @@ public class LastCharacter {
                 if (sb.length() > deletePosition) {
                     sb.deleteCharAt(deletePosition);
                     position = count - 1;
-                    deletePosition = position + (count - 1);
                 } else {
                     position = deletePosition % sb.length();
                     sb.deleteCharAt(position);
-                    deletePosition = position + (count - 1);
                 }
+                deletePosition = position + (count - 1);
             }
         }
         return sb.toString();

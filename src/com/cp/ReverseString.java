@@ -106,6 +106,5 @@ public class ReverseString<T> {
         for (Character i : character) {
             System.out.print(i + " ");
         }
-
     }
 }

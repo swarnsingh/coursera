@@ -32,7 +32,7 @@ public class DotProduct {
         Collections.sort(b);
         long result = 0;
         for (int i = 0; i < a.size(); i++) {
-            result += (Integer) a.get(i) * (Integer) b.get(i);
+            result += (long) (Integer) a.get(i) * (Integer) b.get(i);
         }
         return result;
     }

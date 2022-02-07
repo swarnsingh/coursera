@@ -25,18 +25,17 @@ public class ThreadDemo implements Runnable {
         Thread t2 = new Thread(threadDemo);
         Thread t3 = new Thread(threadDemo);
 
+        System.out.println("T1 Id : " + t1.getId());
+        System.out.println("T2 Id : " + t2.getId());
+        System.out.println("T3 Id : " + t3.getId());
+
         t1.start();
         try {
             t1.join();
         } catch (Exception e) {
             System.out.println(e);
         }
-
         t2.start();
         t3.start();
-
-        System.out.println("T1 Id : " + t1.getId());
-        System.out.println("T2 Id : " + t2.getId());
-        System.out.println("T3 Id : " + t3.getId());
     }
 }

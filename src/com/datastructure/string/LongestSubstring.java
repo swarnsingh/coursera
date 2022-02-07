@@ -23,6 +23,8 @@ package com.datastructure.string;
  * Note that the answer must be a substring, "pwke" is a subsequence and not a substring.
  */
 
+import java.util.HashMap;
+
 /**
  * @author Swarn Singh.
  */
@@ -30,6 +32,28 @@ public class LongestSubstring {
 
     public static void main(String[] args) {
         System.out.println(lengthOfLongestSubstring("ohvhjdml"));
+        System.out.println(longestSubstringLength("ohvhjdml"));
+    }
+
+    public static int longestSubstringLength(String s) {
+        if (s.length() < 2)
+            return s.length();
+        var left = 0;
+        var right = 0;
+        var maxLength = 0;
+        var map = new HashMap<Character, Integer>();
+
+        while (right < s.length()) {
+            var ch = s.charAt(right);
+
+            if (map.containsKey(ch)) {
+                maxLength = Math.max(maxLength, right - left);
+                left = Math.max(left, map.get(ch) + 1);
+            }
+
+            map.put(ch, right++);
+        }
+        return Math.max(maxLength, right - left);
     }
 
     public static int lengthOfLongestSubstring(String s) {
@@ -42,7 +66,7 @@ public class LongestSubstring {
 
             for (int i = 1; i < s.length(); i++) {
                 char currentChar = s.charAt(i);
-                if (sb.toString().contains(s.subSequence(i, i + 1))) {
+                if (sb.toString().contains(String.valueOf(currentChar))) {
                     sb.delete(0, sb.indexOf(String.valueOf(currentChar)) + 1);
                     sb.append(currentChar);
                 } else {
