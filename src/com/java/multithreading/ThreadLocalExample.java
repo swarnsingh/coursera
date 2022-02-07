@@ -13,7 +13,7 @@ public class ThreadLocalExample implements Runnable {
     private static final AtomicInteger nextId = new AtomicInteger(0);
 
     // Thread local variable containing each thread's ID
-    private static final ThreadLocal<Integer> threadId = ThreadLocal.withInitial(() -> nextId.getAndIncrement());
+    private static final ThreadLocal<Integer> threadId = ThreadLocal.withInitial(nextId::getAndIncrement);
 
     // Returns the current thread's unique ID, assigning it if necessary
     public int getThreadId() {
@@ -21,7 +21,7 @@ public class ThreadLocalExample implements Runnable {
     }
 
     // Returns the current thread's starting timestamp
-    private static final ThreadLocal<Date> startDate = ThreadLocal.withInitial(() -> new Date());
+    private static final ThreadLocal<Date> startDate = ThreadLocal.withInitial(Date::new);
 
     @Override
     public synchronized void run() {

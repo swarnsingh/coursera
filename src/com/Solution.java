@@ -256,7 +256,4 @@ public class Solution {
     static class Q extends P {
 
     }
-
-
-
 }

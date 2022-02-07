@@ -54,11 +54,7 @@ public class BFS {
             mQueue.remove();
             if (!mQueue.isEmpty()) {
                 breadthFirstSearch(mQueue.peek());
-            } else {
-                return;
             }
-        } else {
-            return;
         }
     }
 

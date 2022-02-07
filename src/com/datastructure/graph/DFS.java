@@ -88,12 +88,7 @@ public class DFS {
             mStack.pop();
             if (!mStack.isEmpty()) {
                 depthFirstSearch(mStack.peek());
-            } else {
-                return;
             }
-        } else {
-            return;
         }
     }
-
 }

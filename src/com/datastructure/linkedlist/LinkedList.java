@@ -37,7 +37,7 @@ public class LinkedList<E> {
     private void linkLast(E item) {
         Node<E> node = tail;
         if (node == null) {
-            node = new Node(item);
+            node = new Node<>(item);
             tail = node;
             head = node;
         } else {
@@ -163,13 +163,13 @@ public class LinkedList<E> {
     }
 
     public boolean isPalindrome() {
-        Stack<E> stack = new Stack();
+        Stack stack = new Stack();
         int i = 0;
         for (Node<E> x = head; x != null; x = x.next, i++) {
             if (i < (size / 2)) {
                 stack.push(x.item);
             } else if (size % 2 == 0 || i != size / 2) {
-                E item = stack.pop();
+                Object item = stack.pop();
                 if (item != x.item) {
                     return false;
                 }
@@ -179,7 +179,7 @@ public class LinkedList<E> {
     }
 
     public static void main(String[] args) {
-        LinkedList<Integer> l = new LinkedList();
+        LinkedList l = new LinkedList();
         l.add(1);
         l.add(4);
         l.add(4);
@@ -192,10 +192,10 @@ public class LinkedList<E> {
 
         System.out.println("\nIs Linked list is palindrome : " + l.isPalindrome());
 
-        l.add(0, 2);
+        l.add(4, 2);
 
         System.out.println();
-        System.out.print("After adding at position 0 : ");
+        System.out.print("After adding at last position : ");
         for (Object e : l.getAll()) {
             System.out.print(e + " ");
         }
