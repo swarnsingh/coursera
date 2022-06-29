@@ -39,5 +39,7 @@ public class ThreadPool {
         while (!executor.isTerminated()) {
         }
         System.out.println("Finished all threads");
+        String str = "mouse";
+        System.out.println(str.substring(0, 2));
     }
 }
