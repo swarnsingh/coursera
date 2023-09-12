@@ -38,7 +38,6 @@ public class MinHeap {
         }
 
         heap[++size] = element;
-
         int currentPos = size;
 
         while (heap[currentPos] < heap[(parent(currentPos))]) {
@@ -81,5 +80,4 @@ public class MinHeap {
             System.out.print(e + " ");
         }
     }
-
 }

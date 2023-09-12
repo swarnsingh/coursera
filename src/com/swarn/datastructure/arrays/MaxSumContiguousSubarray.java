@@ -17,7 +17,22 @@ public class MaxSumContiguousSubarray {
             maxSum = Math.max(A.get(i), A.get(i) + maxSum);
             if (maxSum > preMaxSum) {
                 preMaxSum = maxSum;
-                continue;
+            }
+        }
+        return Math.max(maxSum, preMaxSum);
+    }
+
+    public int maxSubArray(int[] nums) {
+        if (nums == null || nums.length == 0) {
+            return 0;
+        }
+        int maxSum = nums[0];
+        int preMaxSum = maxSum;
+
+        for (int i = 1; i < nums.length; i++) {
+            maxSum = Math.max(nums[i], nums[i] + maxSum);
+            if (maxSum > preMaxSum) {
+                preMaxSum = maxSum;
             }
         }
         return Math.max(maxSum, preMaxSum);

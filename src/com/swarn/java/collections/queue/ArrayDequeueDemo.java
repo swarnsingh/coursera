@@ -1,6 +1,6 @@
 package com.swarn.java.collections.queue;
 
-import java.util.ArrayDeque;
+import java.util.*;
 
 /**
  * Resizable-array implementation of the Deque interface. Array deques have no capacity restrictions;
@@ -18,6 +18,7 @@ public class ArrayDequeueDemo {
         deque.offer(12);
         deque.offer(45);
         deque.offer(26);
+        deque.add(20);
 
         System.out.println(deque);
 
@@ -30,5 +31,12 @@ public class ArrayDequeueDemo {
 
         System.out.println("pollLast() - " + deque.pollLast());
         System.out.println(deque);
+
+        Map<String, String> map = new HashMap();
+
+        for (Map.Entry<String, String> m : map.entrySet()) {
+
+        }
+
     }
 }

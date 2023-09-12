@@ -7,9 +7,19 @@ import java.math.BigInteger;
 import java.util.*;
 
 /**
+ * PriorityQueue maintains natural order when items remove from the queue.
+ */
+
+/**
  * @author Swarn Singh.
  */
 public class QueueDemo {
+
+    private static void printQueue(Queue queue) {
+        while (!queue.isEmpty()) {
+            System.out.println(queue.remove());
+        }
+    }
 
     public static void main(String[] args) {
         /**
@@ -20,11 +30,20 @@ public class QueueDemo {
          */
         Queue<Employee> queue = new PriorityQueue<>(((o1, o2) -> o2.salary() - o1.salary()));
         queue.addAll(EmployeeCreator.getEmployees());
-        queue.forEach(System.out::println);
+        printQueue(queue);
+
+        Queue<Integer> q11 = new LinkedList<>();
+
 
         List<Integer> numbers = Arrays.asList(2, 21, 12, 1, 15, 20, 4, 19);
         int k = 3;
         System.out.println("\nKth Largest Number : " + findKthLargestNumber(numbers, k));
+
+        Queue<Integer> q = new PriorityQueue<>();
+        for (int i : numbers) {
+            q.add(i);
+        }
+        printQueue(q);
 
         String[] nums = new String[]{
                 "683339452288515879", "7846081062003424420", "4805719838", "4840666580043", "83598933472122816064",
@@ -44,7 +63,7 @@ public class QueueDemo {
         queue1.offer(1);
         queue1.offer(10);
 
-        System.out.println(queue1);
+        printQueue(queue1);
     }
 
     public static int findKthLargestNumber(List<Integer> numbers, int k) {

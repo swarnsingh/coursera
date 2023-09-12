@@ -68,6 +68,7 @@ public class CheckBrackets {
         String text = reader.readLine();
 
         Stack<Bracket> stack = new Stack<>();
+        stack.peek();
         boolean isSuccess = true;
         for (int position = 0; position < text.length(); ++position) {
             char next = text.charAt(position);

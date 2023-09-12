@@ -6,9 +6,9 @@ import java.util.List;
 /**
  * @author Swarn Singh.
  */
-public class ReverseString<T> {
+public class ReverseString<T extends Comparable<T>> {
 
-    public <T> T[] reverse(T[] arr) {
+    public static  <T extends Comparable<T>> T[] reverse(T[] arr) {
         T temp;
 
         if (arr == null) {
@@ -30,7 +30,7 @@ public class ReverseString<T> {
         StringBuilder reverse = new StringBuilder();
         String[] arr = inputWords.split("\\s+");
         for (int i = arr.length - 1; i >= 0; i--) {
-            reverse.append(arr[i] + " ");
+            reverse.append(arr[i]).append(" ");
         }
         return reverse.toString().trim();
     }
@@ -98,10 +98,8 @@ public class ReverseString<T> {
         System.out.println(getFirstTwoItemsWithoutPair(list));
         System.out.println(reverseWords("agoda best apps"));
 
-        ReverseString<Integer> reverseString = new ReverseString<>();
-
         Character[] character = {'a', 'b', 'c', 'd', 'e'};
-        character = reverseString.reverse(character);
+        character = ReverseString.reverse(character);
         System.out.println();
         for (Character i : character) {
             System.out.print(i + " ");

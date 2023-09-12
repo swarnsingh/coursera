@@ -1,7 +1,6 @@
 package com.swarn.datastructure.linkedlist;
 
-import java.util.NoSuchElementException;
-import java.util.Stack;
+import java.util.*;
 
 /**
  * @author Swarn Singh.
@@ -179,6 +178,13 @@ public class LinkedList<E> {
     }
 
     public static void main(String[] args) {
+        LinkedHashMap<Integer, Integer> map = new LinkedHashMap<>();
+        if (map.containsKey(1)) {
+
+        } else {
+            
+        }
+        map.put(1,1);
         LinkedList l = new LinkedList();
         l.add(1);
         l.add(4);

@@ -1,5 +1,8 @@
 package com.swarn.cp.arrays;
 
+import java.util.Arrays;
+import java.util.Comparator;
+
 /**
  * @author Swarn Singh.
  */
@@ -30,8 +33,45 @@ public class MaxSumInArray {
 
     public static void main(String[] args) {
         int[] arr = {1, 4, 2, 10, 2, 3, 1, 0, 20};
+        int[][] arr1 = {{0, 30}, {5, 10}, {15, 20}};
+        //int[][] arr1 = {{7, 10}, {2, 4}};
+        Arrays.sort(arr1, Comparator.comparingInt(a -> a[0]));
         int k = 4;
         int n = arr.length;
         System.out.println(maxSum(arr, n, k));
+
+        int prices[] = {7, 1, 5, 3, 6, 4};
+        System.out.println("Max Profit : " + maxProfit(prices));
+    }
+
+    public static int maxProfit(int[] prices) {
+        int minprice = Integer.MAX_VALUE;
+        int maxprofit = 0;
+        for (int i = 0; i < prices.length; i++) {
+            if (prices[i] < minprice)
+                minprice = prices[i];
+            else if (prices[i] - minprice > maxprofit)
+                maxprofit = prices[i] - minprice;
+        }
+        return maxprofit;
+        /*int maxProfit = 0;
+        int pricesLength = prices.length - 1;
+
+        for (int i = 0; i < pricesLength; i++) {
+            for (int j = i + 1; j < prices.length; j++) {
+                int buyingPrice = prices[i];
+                int sellingPrice = prices[j];
+
+                if (sellingPrice > buyingPrice) {
+                    int profit = sellingPrice - buyingPrice;
+                    if (profit > maxProfit) {
+                        maxProfit = profit;
+                    }
+                }
+            }
+        }
+
+        return maxProfit;*/
+
     }
 }

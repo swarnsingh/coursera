@@ -24,33 +24,34 @@ package com.swarn.interview.sixt;
  */
 public class CuttingRod {
     public static void main(String[] args) {
-        int[] rods = new int[]{1, 2, 3, 4, 5, 6, 7, 8};
-        int[] prices = new int[]{1, 5, 8, 9, 10, 17, 17, 20};
+        int[] rods = new int[]{1, 2, 3, 4, 5, 6, 7};
+        int[] prices = new int[]{1, 3, 3, 3, 4, 4, 6};
         System.out.println(maxProfit(rods, prices));
     }
 
     public static int maxProfit(int[] rods, int[] prices) {
         int maxProfit = 0;
         for (int i = 0; i < rods.length; i++) {
+            int x = rods.length / (i + 1);
+            int price;
             if (rods.length % (i + 1) == 0) {
-                int x = rods.length / (i + 1);
-                int price = prices[i] * x;
+                price = prices[i] * x;
 
-                if (price > maxProfit) {
-                    maxProfit = price;
-                }
             } else {
-                int x = rods.length / (i + 1);
-                int price = (prices[i] * x) + prices[x - 1];
-                if (price > maxProfit) {
-                    maxProfit = price;
-                }
+                price = (prices[i] * x) + prices[x - 1];
+            }
+            if (price > maxProfit) {
+                maxProfit = price;
             }
 
             int y = rods.length - (i + 1);
-            int price = prices[i] + prices[y-1];
-            if (price > maxProfit) {
-                maxProfit = price;
+            int temp = prices[y];
+            if (y > 0) {
+                temp = prices[y - 1];
+            }
+            int total = prices[i] + temp;
+            if (total > maxProfit) {
+                maxProfit = total;
             }
         }
         return maxProfit;

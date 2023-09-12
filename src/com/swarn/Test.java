@@ -8,8 +8,15 @@ import java.util.Date;
  */
 public class Test {
     public static void main(String[] args) {
-        System.out.println("Hello World");
-        createScanDefaultFileName("Scan_");
+        StringBuilder sb = new StringBuilder("You have %1$s %2$s left");
+        System.out.println(sb.lastIndexOf("%1$s"));
+        String str = "You have %1$s %2$s left";
+        String[] arr = str.split("%1$s");
+        for(String s : arr) {
+            System.out.println(s);
+        }
+        //System.out.println("Hello World");
+        //createScanDefaultFileName("Scan_");
     }
 
     public static String createScanDefaultFileName(String s) {

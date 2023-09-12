@@ -19,6 +19,7 @@ Enter no. of Edges : 11
 import com.swarn.coursera.util.FastScanner;
 
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.Queue;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
@@ -77,7 +78,7 @@ public class BFS {
 
         int startingElement = 1;
         mVisitedNodes.put(startingElement, true);
-        mQueue = new ConcurrentLinkedQueue<>();
+        mQueue = new LinkedList<>();
         mQueue.add(startingElement);
         System.out.print("\n" + startingElement);
         breadthFirstSearch(startingElement);

@@ -25,7 +25,7 @@ public class BinarySearchTree<T extends Comparable<T>> {
             } else {
                 add(data, node.left);
             }
-        } else if (node.data.compareTo(data) < 0){
+        } else if (node.data.compareTo(data) < 0) {
             if (node.right == null) {
                 node.right = new Node(data, null, null);
             } else {
@@ -41,6 +41,7 @@ public class BinarySearchTree<T extends Comparable<T>> {
             add(data, root);
         }
     }
+
     public Node<T> getRoot() {
         return root;
     }
@@ -72,6 +73,20 @@ public class BinarySearchTree<T extends Comparable<T>> {
             }
         }
         return false;
+    }
+
+    private static int heightOfTree(Node root) {
+        if (root == null) {
+            return 0;
+        }
+        int left = heightOfTree(root.left);
+        int right = heightOfTree(root.right);
+
+        if (left > right) {
+            return left + 1;
+        } else {
+            return right + 1;
+        }
     }
 
     public static void main(String[] args) {
@@ -110,5 +125,8 @@ public class BinarySearchTree<T extends Comparable<T>> {
 
         bs.inorder();
         System.out.println("Is n is available : " + bs.find('n'));
+
+        System.out.println();
+        System.out.println("Height of tree : " + bs.heightOfTree(bs.root));
     }
 }
