@@ -34,15 +34,15 @@ public class QueueDemo {
 
         Queue<Integer> q11 = new LinkedList<>();
 
-
-        List<Integer> numbers = Arrays.asList(2, 21, 12, 1, 15, 20, 4, 19);
-        int k = 3;
-        System.out.println("\nKth Largest Number : " + findKthLargestNumber(numbers, k));
+        List<Integer> numbers = Arrays.asList(3, 2, 3, 1, 2, 4, 5, 5, 6);
+        int k = 4;
+        System.out.println("\nKth Largest Number : " + findKthLargestNo(numbers, k));
 
         Queue<Integer> q = new PriorityQueue<>();
         for (int i : numbers) {
             q.add(i);
         }
+
         printQueue(q);
 
         String[] nums = new String[]{
@@ -64,6 +64,25 @@ public class QueueDemo {
         queue1.offer(10);
 
         printQueue(queue1);
+    }
+
+    public static int findKthLargestNo(List<Integer> numbers, int k) {
+        PriorityQueue<Integer> pq = new PriorityQueue<>(Collections.reverseOrder());
+        for (int i : numbers) {
+            pq.add(i);
+        }
+        int count = 1;
+        int item = numbers.get(0);
+        while (!pq.isEmpty() && count <= k) {
+            if (k == count) {
+                item = pq.poll();
+                break;
+            } else {
+                count++;
+                pq.poll();
+            }
+        }
+        return item;
     }
 
     public static int findKthLargestNumber(List<Integer> numbers, int k) {

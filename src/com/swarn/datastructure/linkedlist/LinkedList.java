@@ -36,11 +36,11 @@ public class LinkedList<E> {
     private void linkLast(E item) {
         Node<E> node = tail;
         if (node == null) {
-            node = new Node<>(item);
+            node = new Node(item);
             tail = node;
             head = node;
         } else {
-            node = new Node<>(item);
+            node = new Node(item);
             tail.next = node;
             tail = node;
         }

@@ -14,6 +14,7 @@ public class ArrayListDemo {
 
     public static void main(String[] args) {
         var list = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9, 13, 4, 10);
+        int[] arr = new int[]{1,2,3,4,5};
 
         list.stream()
                 .filter(item -> item % 2 == 0)
