@@ -1,7 +1,6 @@
 package com.swarn.java.collections.set;
 
-import java.util.Comparator;
-import java.util.TreeSet;
+import java.util.*;
 
 /**
  * Java TreeSet class contains unique elements only like HashSet.
@@ -15,7 +14,7 @@ import java.util.TreeSet;
  * <p>
  * TreeSet is being implemented using a binary search tree, which is self-balancing just like a Red-Black Tree.
  * Therefore, operations such as a search, remove, and add consume O(log(N)) time. The reason behind this is there in
- * the self-balancing tree. It is there to ensure that the tree height never exceeds O(log(N)) for all of the mentioned
+ * the self-balancing tree. It is there to ensure that the tree height never exceeds O(log(N)) for all the mentioned
  * operations. Therefore, it is one of the efficient data structures in order to keep the large data that is sorted and
  * also to do operations on it.
  * <p>
@@ -26,20 +25,15 @@ import java.util.TreeSet;
 
 public class TreeSetTest {
     public static void main(String[] args) {
-        TreeSet<String> treeSet = new TreeSet(Comparator.reverseOrder());
-        treeSet.add("Vijay");
-        treeSet.add("Ajay");
-        treeSet.add("Ajay Singh");
-        treeSet.add("Vijay Sharma");
-        treeSet.add("Swarn");
-        treeSet.add("Monu");
-        treeSet.add("Ravi");
-        treeSet.add("Vijay");
+        TreeSet<String> treeSet = new TreeSet(Collections.reverseOrder());
+        List<String> list = Arrays.asList("Vijay", "Ajay", "Ajay Singh", "Swarn Singh", "Tony", "Aman", "Rohan");
 
-        treeSet.remove("Monu");
+        treeSet.addAll(list);
 
-        for (String s : treeSet) {
-            System.out.println(s);
-        }
+        System.out.println(treeSet);
+
+        treeSet.remove("Ajay");
+
+        System.out.println(treeSet);
     }
 }

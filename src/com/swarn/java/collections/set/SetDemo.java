@@ -34,8 +34,13 @@ public class SetDemo {
         obj2.addAll(employees);
         obj2.forEach(System.out::println);
 
-        System.out.println("\n-------------------------------------\nAll Employees List with insertion order");
-        var obj3 = new LinkedHashSet<>(employees);
+        System.out.println("\n-------------------------------------\nSort by Name in Descending Order");
+        var obj3 = new TreeSet<>(Comparator.comparing(Employee::name).reversed());
+        obj3.addAll(employees);
         obj3.forEach(System.out::println);
+
+        System.out.println("\n-------------------------------------\nAll Employees List with insertion order");
+        var obj4 = new LinkedHashSet<>(employees);
+        obj4.forEach(System.out::println);
     }
 }

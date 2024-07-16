@@ -14,7 +14,7 @@ public class Trie {
         root = new TrieNode();
     }
 
-    static class TrieNode {
+    private static class TrieNode {
         Map<Character, TrieNode> children;
         TrieNode parent;
         boolean endOfWord;
@@ -25,7 +25,7 @@ public class Trie {
         }
     }
 
-    private void insert(String word) {
+    public void insert(String word) {
         TrieNode current = root;
 
         for (int i = 0; i < word.length(); i++) {
@@ -43,7 +43,7 @@ public class Trie {
         current.endOfWord = true;
     }
 
-    private boolean search(String word) {
+    public boolean search(String word) {
         TrieNode current = root;
 
         for (int i = 0; i < word.length(); i++) {
@@ -57,10 +57,10 @@ public class Trie {
             current = node;
         }
 
-        return true;
+        return current.endOfWord;
     }
 
-    private boolean delete(String word) {
+    public boolean delete(String word) {
         return delete(root, word, 0);
     }
 
@@ -96,6 +96,7 @@ public class Trie {
 
     public static void main(String[] args) {
         Trie trie = new Trie();
+        trie.insert("apple");
         trie.insert("peter");
         trie.insert("piper");
         trie.insert("picked");
@@ -130,5 +131,4 @@ public class Trie {
 
         System.out.println("pi is available : " + trie.search("pi"));
     }
-
 }

@@ -31,12 +31,5 @@ public class ArrayDequeueDemo {
 
         System.out.println("pollLast() - " + deque.pollLast());
         System.out.println(deque);
-
-        Map<String, String> map = new HashMap();
-
-        for (Map.Entry<String, String> m : map.entrySet()) {
-
-        }
-
     }
 }

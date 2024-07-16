@@ -18,6 +18,5 @@ public class ArrayListTest {
         for (int i : list) {
             System.out.print(i + " ");
         }
-        System.out.println();
     }
 }

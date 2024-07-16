@@ -1,23 +1,20 @@
 package com.swarn.datastructure.tree;
 
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Queue;
+import java.util.*;
 
 /**
  * Simple Binary Tree Implementation
- * 38
- * /    \
- * /       \
- * /          \
- * 13            13
- * /    \           /   \
- * /       \         /     \
- * 51         10       12      40
- * /  \        / \      / \
- * 84   25     89  37   66  95
- *
+ * <p>
+ *         38
+ *       /  \
+ *     13    51
+ *    / \    / \
+ *  10  25 40  84
+ *    \      \   \
+ *    12     37  89
+ *                \
+ *                95
+ *</p>
  * @param <T> Type of data For Ex (Integer, Character, String etc.)
  * @author Swarn Singh.
  */
@@ -279,6 +276,56 @@ public class BinaryTree<T> {
     }
 
     /**
+     * Calculates the maximum depth of the binary tree.
+     *
+     * @param node The root node of the binary tree.
+     * @return The maximum depth of the binary tree. If the tree is empty (node is null), returns 0.
+     * The depth is defined as the number of edges from the root node to the farthest leaf node.
+     */
+    public int maxDepthOfTree(Node<T> node) {
+        if (node == null) {
+            return 0; // An empty tree has a depth of 0
+        }
+        int leftTreeDepth = maxDepthOfTree(node.left);
+        int rightTreeDepth = maxDepthOfTree(node.right);
+        return Math.max(leftTreeDepth, rightTreeDepth) + 1;
+    }
+
+    /**
+     * Calculates the diameter of the binary tree.
+     *
+     * @return The diameter of the binary tree, which is the number of edges in the longest path between any two nodes.
+     */
+    public int diameterOfBinaryTree() {
+        int[] diameter = new int[1]; // Array to store the diameter
+        calculateHeight(root, diameter);
+        return diameter[0];
+    }
+
+    /**
+     * Helper method to calculate the height of the tree and update the diameter.
+     *
+     * @param node The current node.
+     * @param diameter An array to store the current diameter of the tree.
+     * @return The height of the current subtree.
+     */
+    private int calculateHeight(Node<T> node, int[] diameter) {
+        if (node == null) {
+            return 0;
+        }
+
+        // Recursively find the height of left and right subtrees
+        int leftHeight = calculateHeight(node.left, diameter);
+        int rightHeight = calculateHeight(node.right, diameter);
+
+        // Update the diameter if the path through the current node is larger
+        diameter[0] = Math.max(diameter[0], leftHeight + rightHeight);
+
+        // Return the height of the tree rooted at the current node
+        return Math.max(leftHeight, rightHeight) + 1;
+    }
+
+    /**
      * Calculates the depth of the node with the given target value in the binary tree.
      *
      * @param node        The root node of the binary tree (or subtree).
@@ -345,19 +392,9 @@ public class BinaryTree<T> {
 
     public static void main(String[] args) {
         BinaryTree<Integer> binaryTree = new BinaryTree<>();
-        binaryTree.add(38);
-        binaryTree.add(13);
-        binaryTree.add(13);
-        binaryTree.add(51);
-        binaryTree.add(10);
-        binaryTree.add(12);
-        binaryTree.add(40);
-        binaryTree.add(84);
-        binaryTree.add(25);
-        binaryTree.add(89);
-        binaryTree.add(37);
-        binaryTree.add(66);
-        binaryTree.add(95);
+        Integer[] items = {38, 13, 13, 51, 10, 12, 40, 84, 25, 89, 37, 66, 95};
+
+        binaryTree.addAll(items);
 
         System.out.println("\nIs 61 is available : " + binaryTree.isAvailable(61));
         System.out.println("Is 66 is available : " + binaryTree.isAvailable(66));
@@ -392,5 +429,8 @@ public class BinaryTree<T> {
 
         bt.invertTree(bt.root);
         bt.traverse();
+
+        System.out.println("\nMax Depth of the binary tree : "+binaryTree.maxDepthOfTree(binaryTree.getRoot()));
+        System.out.println("\nDiameter of the binary tree : "+binaryTree.diameterOfBinaryTree());
     }
 }

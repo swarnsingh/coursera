@@ -76,7 +76,7 @@ public class BFS {
             adjacent[vx2][vx1] = 1;
         }
 
-        int startingElement = 1;
+        int startingElement = 5;
         mVisitedNodes.put(startingElement, true);
         mQueue = new LinkedList<>();
         mQueue.add(startingElement);
