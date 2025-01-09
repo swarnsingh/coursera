@@ -8,25 +8,6 @@ import java.util.*;
  */
 public class Test {
     public static void main(String[] args) {
-        /*StringBuilder sb = new StringBuilder("You have %1$s %2$s left");
-        System.out.println(sb.lastIndexOf("%1$s"));
-        String str = "You have %1$s %2$s left";
-        String[] arr = str.split("%1$s");
-        for (String s : arr) {
-            System.out.println(s);
-        }*/
-        //System.out.println("Hello World");
-        //createScanDefaultFileName("Scan_");
-        /*int[] nums1 = new int[]{1, 2, 3, 0, 0, 0};
-        int m = 3;
-        int[] nums2 = new int[]{2, 5, 6};
-        int n = 3;
-        merge(nums1, m, nums2, n);*/
-        /*int[] inp = new int[]{2, 1};
-        moveZeroes(inp);
-        for (int i : inp) {
-            System.out.print(i + " ");
-        }*/
         Set<Integer> set = new TreeSet<>();
         set.add(1);
         set.add(2);
@@ -36,6 +17,17 @@ public class Test {
             System.out.println(i);
         }
         ArrayList<Integer> list = new ArrayList<>();
+        System.out.println("N : "+solve(12));
+
+        int cores = Runtime.getRuntime().availableProcessors();
+        System.out.println("Number of available cores: " + cores);
+        Set<String> set1 = new HashSet<>();
+        HashMap<String, String> map = new HashMap<>();
+        map.put("cat", "cat");
+        map.put("cats", "cats");
+        map.put("dog", "dog");
+        map.put("catsdog", "catsdog");
+        System.out.println(map.containsKey("cat"));
     }
 
     public static void moveZeroes(int[] nums) {
@@ -156,5 +148,18 @@ public class Test {
         } else {
             return -1;
         }
+    }
+
+    static int solve(int n) {
+        if (n > 3) {
+            for (int i = 2; i <= n/2; i++) {
+                if (n % i == 0) {
+                    int value = n / i;
+                    n = value + i;
+                    i = 2;
+                }
+            }
+        }
+        return n;
     }
 }

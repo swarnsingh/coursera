@@ -1,6 +1,5 @@
 package com.swarn.java.collections.linkedlist;
 
-import java.net.CookieHandler;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.LinkedList;
@@ -28,7 +27,7 @@ public class LinkedListTest {
             System.out.print(i + " ");
         }
 
-        Collections.sort(linkedList, Collections.reverseOrder()); // this will sort in decreasing order
+        linkedList.sort(Collections.reverseOrder()); // this will sort in decreasing order
         System.out.println();
         for (int i : linkedList) {
             System.out.print(i + " ");

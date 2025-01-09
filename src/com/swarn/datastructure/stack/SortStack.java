@@ -27,20 +27,20 @@ public class SortStack {
     }
 
     public static void main(String[] args) {
-        Stack<Integer> input = new Stack<Integer>();
-        input.add(34);
-        input.add(3);
-        input.add(31);
-        input.add(98);
-        input.add(92);
-        input.add(23);
+        Stack<Integer> stack = new Stack<Integer>();
+        stack.add(34);
+        stack.add(3);
+        stack.add(31);
+        stack.add(98);
+        stack.add(92);
+        stack.add(23);
 
         // This is the temporary stack
-        Stack<Integer> tmpStack = sortStack(input);
+        stack = sortStack(stack);
         System.out.println("Sorted numbers are:");
 
-        while (!tmpStack.empty()) {
-            System.out.print(tmpStack.pop() + " ");
+        while (!stack.empty()) {
+            System.out.print(stack.pop() + " ");
         }
     }
 }

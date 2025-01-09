@@ -14,7 +14,7 @@ public class ArrayListDemo {
 
     public static void main(String[] args) {
         var list = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9, 13, 4, 10);
-        int[] arr = new int[]{1,2,3,4,5};
+        int[] arr = new int[]{1, 2, 3, 4, 5};
 
         list.stream()
                 .filter(item -> item % 2 == 0)
@@ -59,12 +59,12 @@ public class ArrayListDemo {
 
         designationCounts.forEach((key, value) -> System.out.println(key + " : " + value));
 
-        Hashtable<Integer,String> hm= new Hashtable<>();
+        Hashtable<Integer, String> hm = new Hashtable<>();
 
-        hm.put(100,"Amit");
-        hm.put(102,"Ravi");
-        hm.put(101,"Vijay");
-        hm.put(103,"Rahul");
+        hm.put(100, "Amit");
+        hm.put(102, "Ravi");
+        hm.put(101, "Vijay");
+        hm.put(103, "Rahul");
 
         hm.forEach((key, value) -> System.out.println(key + " : " + value));
     }

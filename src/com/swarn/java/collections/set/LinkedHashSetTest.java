@@ -15,7 +15,7 @@ import java.util.LinkedHashSet;
 
 public class LinkedHashSetTest {
     public static void main(String[] args) {
-        LinkedHashSet<Integer> linkedHashSet = new LinkedHashSet();
+        LinkedHashSet<Integer> linkedHashSet = new LinkedHashSet<>();
         linkedHashSet.add(1);
         linkedHashSet.add(3);
         linkedHashSet.add(2);

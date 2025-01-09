@@ -24,6 +24,6 @@ public class BinarySearch {
     public static void main(String[] args) {
         int[] arr = {10, 20, 30, 40, 50};
         int key = 20;
-        System.out.println("Find element "+key+" in array at position -> "+binarySearch(arr, 0, arr.length, key));
+        System.out.println("Find element " + key + " in array at position -> " + binarySearch(arr, 0, arr.length, key));
     }
 }
